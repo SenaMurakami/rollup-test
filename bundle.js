@@ -4,7 +4,7 @@
     function greeter(person) {
         return 'Hello, ' + person;
     }
-    var user = 'World';
+    const user = 'World';
     document.body.textContent = greeter(user);
 
 })();

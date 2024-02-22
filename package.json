@@ -1,18 +1,53 @@
 {
-  "name": "rollup-test",
+  "name": "rolluptest",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
-  "type": "module", 
+  "main": "dist/hellolib.cjs.js",
+  "module": "dist/hellolib.es.js",
+  "browser": "dist/hellolib.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rollup -c --bundleConfigAsCjs",
+    "test": "jest",
+    "lint": "eslint --fix 'src/*.ts'"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    },
+    "globals": {
+      "ts-jest": {
+        "tsconfig": "tsconfig.json"
+      }
+    },
+    "testMatch": [
+      "**/test/*.test.ts"
+    ]
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "Sena Murakami",
+    "url": "https://github.com/SenaMurakami"
+  },
+  "license": "MIT",
   "devDependencies": {
+    "@babel/core": "^7.23.9",
+    "@babel/preset-env": "^7.23.9",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
+    "@types/jest": "^29.5.12",
+    "@typescript-eslint/eslint-plugin": "^7.0.2",
+    "@typescript-eslint/parser": "^7.0.2",
+    "eslint": "^8.56.0",
+    "jest": "^29.7.0",
     "rollup": "^4.12.0",
+    "ts-jest": "^29.1.2",
     "tslib": "^2.6.2"
   }
 }
